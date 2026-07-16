@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogja Christmewa Run 2026 - Pembelian Tiket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Dark gradient background sesuai gambar aplikasi */
+            background: linear-gradient(180deg, #0f1b15 0%, #1a2e22 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Header dengan Lingkaran Hijau */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .circle-logo {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #2ecc71 0%, #27ae60 90%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid #f1c40f; /* Aksen emas/kuning */
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .circle-logo h1 {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .circle-logo span {
+            font-size: 12px;
+            margin-top: 5px;
+            background: #f1c40f;
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .header h2 {
+            color: #f1c40f;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        /* Form Body */
+        .form-body {
+            padding: 20px 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #f1c40f;
+            font-size: 13px;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 14px;
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .form-group select option {
+            background: #1a2e22;
+            color: #fff;
+        }
+
+        /* Kategori Tiket */
+        .ticket-category {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .ticket-category:hover {
+            background: rgba(46, 204, 113, 0.15);
+            border-color: #2ecc71;
+        }
+
+        .ticket-category input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            accent-color: #2ecc71;
+        }
+
+        .ticket-info {
+            flex-grow: 1;
+        }
+
+        .ticket-name {
+            font-weight: 700;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .ticket-price {
+            font-size: 13px;
+            color: #f1c40f;
+            font-weight: 600;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(90deg, #f1c40f 0%, #e67e22 100%);
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4);
+        }
+
+        /* Navigasi Bawah */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 10px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 11px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-item:hover {
+            color: #2ecc71;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header dengan Lingkaran Hijau -->
+        <div class="header">
+            <div class="circle-logo">
+                <h1>JOGJA<br>CHRISTMEWA<br>RUN 2026</h1>
+                <span>2026</span>
+            </div>
+            <h2>PENDAFTARAN DIBUKA</h2>
+            <p>Berlari bersama menapaki sejarah di Kota Yogyakarta</p>
+        </div>
+
+        <!-- Form Pendaftaran -->
+        <div class="form-body">
+            <form action="#" method="POST">
+                
+                <div class="form-group">
+                    <label for="name">Nama Lengkap (Sesuai KTP)</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Alamat Email</label>
+                    <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Nomor WhatsApp Aktif</label>
+                    <input type="tel" id="phone" name="phone" placeholder="0812xxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="blood">Golongan Darah</label>
+                    <select id="blood" name="blood" required>
+                        <option value="">-- Pilih Golongan Darah --</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                        <option value="tidaktahu">Tidak Tahu</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tshirt">Ukuran Kaos Lari</label>
+                    <select id="tshirt" name="tshirt" required>
+                        <option value="">-- Pilih Ukuran --</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Pilih Kategori Tiket</label>
+                    
+                    <label class="ticket-category">
+                        <input type="radio" name="ticket" value="5k" required>
+                        <div class="ticket-info">
+                            <div class="ticket-name">5K Fun Run</div>
+                            <div class="ticket-price">Rp 150.000</div>
+                        </div>
+                    </label>
+
+                    <label class="ticket-category">
+                        <input type="radio" name="ticket" value="10k">
+                        <div class="ticket-info">
+                            <div class="ticket-name">10K Heritage Run</div>
+                            <div class="ticket-price">Rp 250.000</div>
+                        </div>
+                    </label>
+
+                    <label class="ticket-category">
+                        <input type="radio" name="ticket" value="halfmarathon">
+                        <div class="ticket-info">
+                            <div class="ticket-name">21K Half Marathon</div>
+                            <div class="ticket-price">Rp 350.000</div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="emergency">Kontak Darurat (Nama & No HP)</label>
+                    <input type="text" id="emergency" name="emergency" placeholder="Nama / 0813xxxxxxx" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Ikuti & Beli Tiket</button>
+
+            </form>
+        </div>
+
+        <!-- Navigasi Bawah Sesuai Screenshot -->
+        <div class="bottom-nav">
+            <button class="nav-item">
+                <span class="nav-icon">➕</span>
+                Ikuti
+            </button>
+            <button class="nav-item">
+                <span class="nav-icon">👤</span>
+                Bagikan profil
+            </button>
+            <button class="nav-item">
+                <span class="nav-icon">🔗</span>
+                Salin tautan
+            </button>
+            <button class="nav-item">
+                <span class="nav-icon">📱</span>
+                Kode QR
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>
