@@ -19,7 +19,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 20px 0;
             color: #fff;
         }
 
@@ -32,6 +32,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            margin-bottom: 20px;
         }
 
         /* Header dengan Lingkaran Hijau */
@@ -173,6 +174,30 @@
             font-weight: 600;
         }
 
+        /* Box QRIS Payment */
+        .qris-box {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .qris-box img {
+            width: 180px;
+            height: auto;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .qris-box p {
+            color: #333;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
         .btn-submit {
             width: 100%;
             background: linear-gradient(90deg, #f1c40f 0%, #e67e22 100%);
@@ -218,6 +243,12 @@
 
         .nav-item:hover {
             color: #2ecc71;
+        }
+
+        .nav-item img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
 
         .nav-icon {
@@ -316,6 +347,16 @@
                     <input type="text" id="emergency" name="emergency" placeholder="Nama / 0813xxxxxxx" required>
                 </div>
 
+                <!-- Bagian Pembayaran Menggunakan qris.png -->
+                <div class="form-group">
+                    <label>Metode Pembayaran (Scan QRIS)</label>
+                    <div class="qris-box">
+                        <!-- Pastikan file qris.png ada di folder yang sama -->
+                        <img src="qris.png" alt="QRIS Code">
+                        <p>Scan kode QRIS di atas menggunakan e-wallet atau m-banking apa pun.</p>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn-submit">Ikuti & Beli Tiket</button>
 
             </form>
@@ -336,7 +377,8 @@
                 Salin tautan
             </button>
             <button class="nav-item">
-                <span class="nav-icon">📱</span>
+                <!-- Menggunakan qris.png sebagai ikon tombol bawah -->
+                <img src="qris.png" alt="Kode QR">
                 Kode QR
             </button>
         </div>
